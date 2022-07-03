@@ -27,7 +27,7 @@
 					<text><![CDATA[FirstReport]]></text>
 				</staticText>
 				<textField>
-					<reportElement key="" x="470" y="40" width="100" height="30" uuid="09453bcf-7659-438f-b826-b88698930a72"/>
+					<reportElement key="name" x="470" y="40" width="100" height="30" uuid="09453bcf-7659-438f-b826-b88698930a72"/>
 					<textFieldExpression><![CDATA[$P{studentName}]]></textFieldExpression>
 				</textField>
 			</frame>
