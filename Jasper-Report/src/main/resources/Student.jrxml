@@ -33,8 +33,11 @@
 		<queryString>
 			<![CDATA[]]>
 		</queryString>
+		<field name="subjectName" class="java.lang.String"/>
+		<field name="marksObtained" class="java.lang.Long"/>
 	</subDataset>
 	<parameter name="studentName" class="java.lang.String"/>
+	<parameter name="tableData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -86,13 +89,13 @@
 					<datasetRun subDataset="Dataset1" uuid="c0a0eb92-b30b-4ef8-aef9-95f6bd320e7d">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="70" uuid="639e9298-33f4-4c6e-a3ed-732672c77628">
+					<jr:column width="80" uuid="639e9298-33f4-4c6e-a3ed-732672c77628">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
 						<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
 						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="70" height="30" uuid="445f2554-2883-4c46-8b99-f71b55e04d58"/>
+								<reportElement x="0" y="0" width="80" height="30" uuid="445f2554-2883-4c46-8b99-f71b55e04d58"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Subject Name]]></text>
 							</staticText>
@@ -100,19 +103,19 @@
 						<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="70" height="30" uuid="98175a2f-f769-46b7-831c-736245c2505d"/>
+								<reportElement x="0" y="0" width="80" height="30" uuid="98175a2f-f769-46b7-831c-736245c2505d"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{subjectName}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="9df62f19-e8f8-4c46-9a93-d610982e84b5">
+					<jr:column width="100" uuid="9df62f19-e8f8-4c46-9a93-d610982e84b5">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
 						<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
 						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="b819c332-8b7f-4fd8-a660-7e3886a9e560"/>
+								<reportElement x="0" y="0" width="100" height="30" uuid="b819c332-8b7f-4fd8-a660-7e3886a9e560"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Marks Obtained]]></text>
 							</staticText>
@@ -120,9 +123,9 @@
 						<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="b5e034be-7f4c-4e17-97ac-32db6a7e0770"/>
+								<reportElement x="0" y="0" width="100" height="30" uuid="b5e034be-7f4c-4e17-97ac-32db6a7e0770"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{marksObtained}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
