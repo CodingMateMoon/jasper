@@ -86,8 +86,8 @@
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Dataset1" uuid="c0a0eb92-b30b-4ef8-aef9-95f6bd320e7d">
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<datasetRun subDataset="Dataset1" uuid="367174b5-6f1c-4401-9f81-3d78f530b5a6">
+						<dataSourceExpression><![CDATA[$P{tableData}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="80" uuid="639e9298-33f4-4c6e-a3ed-732672c77628">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
