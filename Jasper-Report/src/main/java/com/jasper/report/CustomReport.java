@@ -7,6 +7,7 @@ import java.util.Map;
 
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -50,6 +51,8 @@ public class CustomReport {
 			 * 부분에 따로 넘길게 없는 경우 Empty dataSource로 넘깁니다.
 			 */
 			JasperPrint print = JasperFillManager.fillReport(report, parameters, new JREmptyDataSource());
+
+			JasperExportManager.exportReportToPdfFile(print, rootPath + "\\src\\main\\resources\\data\\student.pdf");
 
 			System.out.println("CustomReport Created...");
 

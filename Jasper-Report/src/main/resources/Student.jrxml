@@ -35,9 +35,15 @@
 		</queryString>
 		<field name="subjectName" class="java.lang.String"/>
 		<field name="marksObtained" class="java.lang.Long"/>
+		<sortField name="subjectName"/>
+		<variable name="totalMarks" class="java.lang.Long" calculation="Sum">
+			<variableExpression><![CDATA[$F{marksObtained}]]></variableExpression>
+		</variable>
 	</subDataset>
 	<parameter name="studentName" class="java.lang.String"/>
 	<parameter name="tableData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="subReport" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="subDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -92,7 +98,13 @@
 					<jr:column width="80" uuid="639e9298-33f4-4c6e-a3ed-732672c77628">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
-						<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="Table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="80" height="30" uuid="c9fc25f3-4bd4-409c-b49b-16f762ca4f47"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total Marks =]]></text>
+							</staticText>
+						</jr:tableFooter>
 						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="80" height="30" uuid="445f2554-2883-4c46-8b99-f71b55e04d58"/>
@@ -112,7 +124,13 @@
 					<jr:column width="100" uuid="9df62f19-e8f8-4c46-9a93-d610982e84b5">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
-						<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="Table_TH" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="100" height="30" uuid="c379d91c-52e5-4309-8bc6-2a3c36144cb6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{totalMarks}]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
 						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="100" height="30" uuid="b819c332-8b7f-4fd8-a660-7e3886a9e560"/>
@@ -150,6 +168,12 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="221" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="221" uuid="74a5a957-8438-4b8b-a6ec-999567c69b6e"/>
+				<dataSourceExpression><![CDATA[$P{subDataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{subReport}]]></subreportExpression>
+			</subreport>
+		</band>
 	</summary>
 </jasperReport>
