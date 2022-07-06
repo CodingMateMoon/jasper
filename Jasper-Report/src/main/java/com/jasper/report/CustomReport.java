@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -43,6 +44,9 @@ public class CustomReport {
 			Map<String, Object> parameters = new HashMap<String, Object>();
 			parameters.put("studentName", "Moon");
 			parameters.put("tableData", dataSource);
+			parameters.put("subReport", getSubReport(rootPath + "\\src\\main\\resources\\FirstReport.jrxml"));
+			parameters.put("subDataSource", getSubDataSource());
+			parameters.put("subParameters", getSubParameters());
 
 			JasperReport report = JasperCompileManager.compileReport(filePath);
 
@@ -59,6 +63,37 @@ public class CustomReport {
 		} catch (Exception e) {
 			System.out.println("Exception while creating report");
 		}
+	}
+
+	public static JasperReport getSubReport(String filePath) {
+		JasperReport report;
+		try {
+			report = JasperCompileManager.compileReport(filePath);
+			return report;
+		} catch (JRException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	public static JRBeanCollectionDataSource getSubDataSource() {
+		Student student1 = new Student(1L, "Raj", "Joshi", "Happy Street", "Delhi");
+		Student student2 = new Student(2L, "Peter", "Smith", "Any Street", "Mumbai");
+
+		List<Student> list = new ArrayList<Student>();
+		list.add(student1);
+		list.add(student2);
+
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(list);
+		return dataSource;
+	}
+
+	public static Map<String, Object> getSubParameters() {
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("studentName", "Raj");
+
+		return parameters;
 	}
 
 }
